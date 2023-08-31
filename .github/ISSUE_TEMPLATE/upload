@@ -1,0 +1,49 @@
+- type: textarea
+  attributes:
+    label: Name
+    description: What is the name of your package?
+    placeholder: Example: Sqlite
+    value: name
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Description
+    description: What is the description of your package?
+    placeholder: Example: Sqlite
+    value: description
+  validations:
+    required: false
+
+- type: textarea
+  attributes:
+    label: Repository URL
+    description: What is the repository of your package?
+    placeholder: Example: github.com/username/package
+    value: repository
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Website
+    description: What is the description of your package?
+    placeholder: Example: Sqlite
+    value: website
+  validations:
+    required: false
+
+- type: textarea
+  attributes:
+    label: Version
+    description: What is the version of your package?
+    placeholder: Example: v1.0
+    value: version
+  validations:
+    required: true
+
+
+- type: markdown
+  attributes:
+    value: "Thanks for uploading an new package!"
