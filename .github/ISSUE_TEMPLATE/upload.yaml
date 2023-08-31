@@ -1,5 +1,5 @@
-name: "Upload new Package"
-description: "Upload an new package config!"
+name: Upload new Package
+description: Upload an new package config!
 
 - type: input
   attributes:
