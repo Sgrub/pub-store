@@ -2,7 +2,7 @@
   attributes:
     label: Name
     description: What is the name of your package?
-    placeholder: Example: Sqlite
+    placeholder:Sqlite
     value: name
   validations:
     required: true
@@ -11,7 +11,7 @@
   attributes:
     label: Description
     description: What is the description of your package?
-    placeholder: Example: Sqlite
+    placeholder: Sqlite
     value: description
   validations:
     required: false
@@ -20,7 +20,7 @@
   attributes:
     label: Repository URL
     description: What is the repository of your package?
-    placeholder: Example: github.com/username/package
+    placeholder: github.com/username/package
     value: repository
   validations:
     required: true
@@ -29,7 +29,7 @@
   attributes:
     label: Website
     description: What is the description of your package?
-    placeholder: Example: Sqlite
+    placeholder: Sqlite
     value: website
   validations:
     required: false
@@ -38,7 +38,7 @@
   attributes:
     label: Version
     description: What is the version of your package?
-    placeholder: Example: v1.0
+    placeholder: v1.0
     value: version
   validations:
     required: true
