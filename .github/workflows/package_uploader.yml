@@ -1,0 +1,52 @@
+name: Push on issue creation
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Create file
+        run: echo "Hello World" > hello.txt
+
+      - name: Check if issue has approved label
+        id: check-label
+        uses: actions/github-script@v3.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data } = await github.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            const labels = data.labels.map(label => label.name);
+            const hasApprovedLabel = labels.includes('approved');
+            console.log(`Has approved label? ${hasApprovedLabel}`);
+            return { hasApprovedLabel };
+
+      - name: Commit files and close issue
+        if: steps.check-label.outputs.hasApprovedLabel == 'true'
+        run: |
+          git config --global user.email "packageuploader+35432636@bot-noreply.github.com"
+          git config --global user.name "[BOT] Package Uploader"
+          git add .
+          git commit -m "Add hello.txt for issue #${{ github.event.issue.number }} created on $(date +'%Y-%m-%d %H:%M:%S')"
+          git push
+          echo "::set-output name=issue_number::${{ github.event.issue.number }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Close issue
+        if: steps.check-label.outputs.hasApprovedLabel == 'true'
+        uses: peter-evans/close-issue@v1.0.0
+        with:
+          issue-number: ${{ steps.build.outputs.issue_number }}
+          comment: 'Closing this issue because it has been approved.'
+          author-name: '[BOT] Package Uploader'
