@@ -21,7 +21,7 @@ jobs:
           git config --global user.email "packageuploader+35432636@bot-noreply.github.com"
           git config --global user.name "[BOT] Package Uploader"
           git add .
-          git commit -m "Uploaded Package '#${{ github.event.issue.title }}' based on  #${{ github.event.issue.number }}"
+          git commit -m "Uploaded Package '#${{ github.event.issue.title }}' based on  #${{ github.event.issue }}"
           git push --quiet
           echo "::set-output name=issue_number::${{ github.event.issue.number }}"
         env:
