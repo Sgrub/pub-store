@@ -21,6 +21,7 @@ jobs:
           git config --global user.name "[BOT] Package Uploader"
           git add .
           git commit -m "Add hello.txt for issue #${{ github.event.issue.number }} created on $(date +'%Y-%m-%d %H:%M:%S')"
+          git pull
           git push
           echo "::set-output name=issue_number::${{ github.event.issue.number }}"
         env:
