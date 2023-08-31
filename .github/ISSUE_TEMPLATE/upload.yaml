@@ -1,6 +1,6 @@
 name: Upload new Package
 description: Upload an new package config!
-
+body:
 - type: input
   attributes:
     label: Name
