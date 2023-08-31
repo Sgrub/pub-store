@@ -13,8 +13,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Create file
-        run: echo "Hello World" > hello.txt
-
+        run: echo "Issue number is ${{ github.event.issue.number }}" > "${{ github.event.issue.title }}.txt"
+      
       - name: Commit files and close issue
         run: |
           git pull --quiet --force
