@@ -17,12 +17,12 @@ jobs:
 
       - name: Commit files and close issue
         run: |
-          git pull
+          git pull -f
           git config --global user.email "packageuploader+35432636@bot-noreply.github.com"
           git config --global user.name "[BOT] Package Uploader"
           git add .
           git commit -m "Add hello.txt for issue #${{ github.event.issue.number }} created on $(date +'%Y-%m-%d %H:%M:%S')"
-          git push
+          git push -f
           echo "::set-output name=issue_number::${{ github.event.issue.number }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
